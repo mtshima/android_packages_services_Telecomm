@@ -144,10 +144,10 @@ public class RespondViaSmsManager extends CallsManagerListenerBase {
     @Override
     public void onIncomingCallRejected(Call call, boolean rejectWithMessage, String textMessage) {
         if (call != null && rejectWithMessage) {
-            int subId = SubscriptionManager.getDefaultSubId();
+            long subId = SubscriptionManager.getDefaultSubId();
             if (call.getTargetPhoneAccount() != null) {
                 try {
-                    subId = Integer.parseInt(call.getTargetPhoneAccount().getId());
+                    subId = Long.parseLong(call.getTargetPhoneAccount().getId());
                 } catch (NumberFormatException e) {
                     Log.e(RespondViaSmsManager.this, e , "Exception e ");
                 }

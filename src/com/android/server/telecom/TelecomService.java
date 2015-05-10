@@ -626,7 +626,7 @@ public class TelecomService extends Service {
             long token = Binder.clearCallingIdentity();
             String retval = "content://icc/adn/";
             try {
-                int subId = mPhoneAccountRegistrar.getSubscriptionIdForPhoneAccount(accountHandle);
+                long subId = mPhoneAccountRegistrar.getSubscriptionIdForPhoneAccount(accountHandle);
                 retval = retval + "subId/" + subId;
             } finally {
                 Binder.restoreCallingIdentity(token);
@@ -705,10 +705,10 @@ public class TelecomService extends Service {
         }
 
         @Override
-        public int getActiveSubscription() { return 0; }
+        public long getActiveSubscription() { return 0; }
 
         @Override
-        public void switchToOtherActiveSub(int subId) { }
+        public void switchToOtherActiveSub(long subId) { }
 
         /**
          * Dumps the current state of the TelecomService.  Used when generating problem reports.
